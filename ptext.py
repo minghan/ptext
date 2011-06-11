@@ -54,7 +54,7 @@ def init_screen():
     curses.start_color()
 
     # (fg, bg) 
-    curses.init_pair(1, curses.COLOR_YELLOW, curses.COLOR_BLACK)
+    #curses.init_pair(1, curses.COLOR_YELLOW, curses.COLOR_BLACK)
 
     # Apparently, I can't hide the cursor (for now...)
     # http://www.technovelty.org/linux/term.html
@@ -86,7 +86,7 @@ def load_slide(n):
         for line in Globals.slides[n-1].body:
             newline = "* %s" % line
             Globals.screen.addstr(y, 0, newline)
-            y = y + 1
+            y = y + newline.count("\n") + 1
 
     Globals.screen.refresh()
 
@@ -126,7 +126,7 @@ def parse_file(f):
                 point = ""
             else:
                 is_first_point = False
-            point = line.lstrip(Settings.POINT_PREFIX)
+            point = line.lstrip(Settings.POINT_PREFIX + ' ')
         else:
             point += "\n%s" % line
 
@@ -159,7 +159,6 @@ def load_file():
 
 def main():
     load_file()
-
 
     init_screen()
 
