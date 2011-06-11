@@ -1,33 +1,13 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 """
 
-===== INFO =====
+===== General Information =====
   
-  ptext is a text-based presenter written in python
+  ptext is a text-based presenter written in python.
+  ptext is written by minghan licensed under the MIT license.
 
-===== MIT LICENSE =====
-
-  Copyright (C) 2011 by Ming Han Teh (teh_minghan@hotmail.com)
-
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files (the "Software"), to deal
-  in the Software without restriction, including without limitation the rights
-  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  copies of the Software, and to permit persons to whom the Software is
-  furnished to do so, subject to the following conditions:
-
-  The above copyright notice and this permission notice shall be included in
-  all copies or substantial portions of the Software.
-
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-  THE SOFTWARE.
-
+  See README for more information.
 
 ===== Credit =====
 
@@ -37,8 +17,6 @@
   * http://docs.python.org/library/curses.html
 
 """
-
-
 
 import curses, sys, traceback
 
@@ -74,6 +52,13 @@ def init_screen():
     curses.noecho()
     curses.cbreak()
     curses.start_color()
+
+    # (fg, bg) 
+    curses.init_pair(1, curses.COLOR_YELLOW, curses.COLOR_BLACK)
+
+    # Apparently, I can't hide the cursor (for now...)
+    # http://www.technovelty.org/linux/term.html
+    #curses.curs_set(1)  # 0, 1, or 2, for invisible, normal, or very visible
 
 def restore_screen():
     curses.nocbreak()
@@ -133,7 +118,7 @@ def parse_file(f):
                 title, body, point = reset_attrib()
             else:
                 is_first_slide = False
-            title = line.lstrip(Settings.TITLE_PREFIX)
+            title = line.lstrip(Settings.TITLE_PREFIX + ' ')
             is_first_point = True
         elif line.startswith(Settings.POINT_PREFIX):
             if not is_first_point:
@@ -175,8 +160,6 @@ def load_file():
 def main():
     load_file()
 
-    # (fg, bg) 
-    curses.init_pair(1, curses.COLOR_YELLOW, curses.COLOR_BLACK)
 
     init_screen()
 

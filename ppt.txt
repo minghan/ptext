@@ -5,7 +5,7 @@
 
 + What is the inspiration behind ptext?
 
-- I was looking for a super simple way of doing a text-based 
+- I was looking for a super simple way of doing a text-based presentation
 
 + How to use it?
 
@@ -21,5 +21,6 @@
 + Feedback?
 
 - ptext is written by minghan
-- like it?
+  https://github.com/minghan/ptext
+- Like it?
 

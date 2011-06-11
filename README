@@ -1,0 +1,8 @@
+# How do I use it?
+    
+    % chmod +x ptext.py
+    % ./ptext.py ppt.txt
+
+Alternatively,
+    
+    % python ptext.py ppt.txt
