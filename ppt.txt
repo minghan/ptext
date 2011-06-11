@@ -1,0 +1,25 @@
++ What is ptext?
+
+- ptext is a simple text based presenter.
+- ptext is written in python
+
++ What is the inspiration behind ptext?
+
+- I was looking for a super simple way of doing a text-based 
+
++ How to use it?
+
+- It's really easy...
+- $ ./ptext.py ppt.txt
+  OR
+  $ pytohn ppt.txt
+- Hint
+    'n' to go to the next slide
+    'b' to go to the previous slide
+    'q' to quit
+
++ Feedback?
+
+- ptext is written by minghan
+- like it?
+
